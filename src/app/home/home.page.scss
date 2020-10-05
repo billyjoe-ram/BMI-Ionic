@@ -1,3 +1,22 @@
+ion-label {
+  font-size: 24px;  
+}
+
+ion-input {
+  width: 256px;
+  height: 42px;
+  border: 2px solid var(--ion-color-success);
+  border-radius: 6px;
+  margin-left: 52px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+ion-title {
+  text-align: center;
+}
+
 #container {
   text-align: center;
 
@@ -6,6 +25,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  display: block;
 }
 
 #container strong {
