@@ -15,11 +15,11 @@
 
   <div id="container">  
 
-    <ion-label for="inp-altura">Altura (em metros)</ion-label>
-    <ion-input id="inp-altura" type="number"></ion-input>
+    <ion-label for="inpAltura">Altura (em metros)</ion-label>
+    <ion-input [(ngModel)]=inpAltura type="number"></ion-input>
 
-    <ion-label for="inp-peso">Peso (em kg)</ion-label>
-    <ion-input id="inp-peso" type="number"></ion-input>
+    <ion-label for="inpPeso">Peso (em kg)</ion-label>
+    <ion-input [(ngModel)]=inpPeso type="number"></ion-input>
 
     <ion-button (click)="showToast()" color="success">CALCULAR IMC</ion-button>
 

@@ -8,18 +8,58 @@ import { ToastController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(public toastController: ToastController) {}
+  inpPeso: number = null;
+  inpAltura: number = null;
+  grau: string = null;
+  imc: number;
+
+  constructor(public toastController: ToastController) {}  
   
   async showToast() {
-    var altura = parseFloat((<HTMLInputElement>document.querySelector("np-altura")).value);
-    var peso = parseFloat((<HTMLInputElement>document.querySelector("inp-peso")).value);
-    var imc = peso / (altura * altura);
+    let altura = this.inpAltura;
+    let peso = this.inpPeso;
+    this.imc  = peso / (altura * altura)
+    if (this.imc >= 17) {      
+      if (this.imc >= 18) {
+        if (this.imc >= 25) {
+          if (this.imc >= 30) {
+            if (this.imc >= 35) {
+              if (this.imc > 40) {
+                this.grau = "Obesidade Grau III";                  
+              }
+              else
+                this.grau = "Obesidade Grau II";
+            }           
+            else
+              this.grau = "Obesidade Grau I";              
+          }
+          else
+            this.grau = "Acima do Peso";            
+        }
+        else
+          this.grau = "Peso Normal";          
+      }
+      else
+        this.grau = "Abaixo do Peso";          
+    }
+    else
+      this.grau = "Muito Abaixo do Peso";           
 
-    const toast = await this.toastController.create({
-      message: "Seu IMC é de" + imc + "kg/m²",
-      duration: 2000
-    });
-    toast.present();
-  }  
-
+    if (this.imc > 0) {
+      const toast = await this.toastController.create({
+        message: "Seu IMC é de " + this.imc.toFixed(2) + "kg/m². " + this.grau,
+        duration: 2000
+      });
+      console.log(this.imc) 
+      toast.present();  
+    } 
+    else {
+      const toast = await this.toastController.create({
+        message:"Por favor, preencha os campos corretamente",
+        duration: 5000
+      });   
+      console.log(this.imc) 
+      toast.present();   
+    }
+  }
 }
